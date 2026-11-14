@@ -1,0 +1,42 @@
+name: Validate ChatVault public release
+on:
+  push:
+  pull_request:
+jobs:
+  source-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Python source and reproducibility tests
+        run: python -m unittest discover -s tests -p 'test_*.py' -v
+      - name: JavaScript tests and syntax
+        run: |
+          node --check plugin.js
+          node --check desktop/plugin.js
+          node tests/vault-core.test.mjs
+          node tests/vault-i18n.test.mjs
+      - name: Publication privacy audit
+        run: python scripts/audit_public_release.py
+      - name: Shell syntax check
+        run: sh -n Install.sh && sh -n Uninstall.sh
+  windows-installer:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test Windows installer in temporary Hermes home
+        shell: pwsh
+        run: |
+          $dir = Join-Path $env:RUNNER_TEMP 'hermes-fake-home'
+          New-Item -ItemType Directory -Force -Path $dir | Out-Null
+          ./Install.ps1 -HermesHome $dir
+          $out = Join-Path $dir 'desktop-plugins/hermes-chat-vault/plugin.js'
+          if (-not (Test-Path -LiteralPath $out)) { throw 'Plugin missing after install' }
+          if ((Get-FileHash -LiteralPath $out).Hash -ne (Get-FileHash -LiteralPath plugin.js).Hash) { throw 'File mismatch' }
+          ./Uninstall.ps1 -HermesHome $dir
+          if (Test-Path -LiteralPath $out) { throw 'Plugin remained after uninstall' }
