@@ -190,6 +190,8 @@ def build(installed: Path, output: Path) -> Path:
     (destination / 'scripts').mkdir()
     (destination / 'tests').mkdir()
     (destination / 'docs').mkdir()
+    (destination / '.github/workflows').mkdir(parents=True)
+    shutil.copy2(ROOT / '.github/workflows/ci.yml', destination / '.github/workflows/ci.yml')
     result = result.replace('Keep in sync with plugin.yaml.', 'Keep in sync with the public release version.')
     (destination / 'desktop/plugin.js').write_text(result, encoding='utf-8')
     (destination / 'plugin.js').write_text(result, encoding='utf-8')

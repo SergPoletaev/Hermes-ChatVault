@@ -1,11 +1,13 @@
-## 0.2.2 — Public repository CI and Windows installation fixes
+# Changelog
+
+## 0.2.2 — 2026-11-14 · CI and Windows installation fixes
 
 - Fix PowerShell `$HOME` read-only variable collision in install/uninstall scripts.
 - Preserve `.gitignore` on GitHub, and make source rebuild tolerant if a browser upload omits that hidden file.
 - Add regression checks for PowerShell variable use, hidden Git configuration and package completeness.
-- No changes to chat rendering, embedded images, translation or exports.
+- No changes to the exporter, embedded-image handling, or Hermes runtime integrations.
 
-## 0.2.2 — Public / portable packaging
+## 0.2.1 — 2026-11-14 · Public / portable packaging
 
 - Added root `plugin.js` for native Hermes **Install from Git** desktop-only installation.
 - Removed root `plugin.yaml` to avoid unintended Agent component installation.
@@ -13,8 +15,6 @@
 - Removed original private-source checksum from public build manifest.
 - Added public artifact privacy audit and conservative gitignore rules.
 - Retained 0.2.0 export behavior; no changes to Gemma, vision or Gateway.
-
-# Changelog
 
 ## 0.2.0 — 2026-11-14
 

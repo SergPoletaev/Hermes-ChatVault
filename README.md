@@ -75,7 +75,7 @@
 
 ### Install / update / remove
 
-**Install directly from GitHub (recommended on Windows/macOS/Linux):** in Hermes open **Capabilities → Plugins → Install from Git**, paste this repository URL and select **Desktop**. The repo contains a root `plugin.js`; there is no Agent half, build step or prerequisite original Chat Share. Remove using **Capabilities → Plugins → Uninstall**. Until you publish the GitHub repository, use the release ZIP and manual install.
+**Install directly from GitHub (recommended on Windows/macOS/Linux):** in Hermes open **Capabilities → Plugins → Install from Git**, paste this repository URL and select **Desktop**. The repo contains a root `plugin.js`; there is no Agent half, build step or prerequisite original Chat Share. Remove using **Capabilities → Plugins → Uninstall**.
 
 **Manual fallback:** Windows: `Install.cmd` / `Install.ps1`; it detects `%LOCALAPPDATA%\hermes` and honors `HERMES_HOME` (or `-HermesHome` for custom roots). macOS/Linux: `sh Install.sh` targeting `$HOME/.hermes` or `HERMES_HOME=/custom/path sh Install.sh`. Scripts refuse missing or ambiguous Hermes roots. For Git-managed installs use the Hermes UI to update/uninstall.
 
@@ -117,7 +117,7 @@ Based on `smallmj/hermes-chat-share` under MIT; retain the original attribution 
 
 ### 安装与卸载
 
-**推荐通过 GitHub 安装（Windows/macOS/Linux）：** 在 Hermes 中进入 **Capabilities → Plugins → Install from Git**，输入本项目仓库地址，选择 **Desktop**。仓库根目录提供 `plugin.js`，无需 Agent 组件、编译或原始 Chat Share。卸载请使用 **Capabilities → Plugins → Uninstall**。发布 GitHub 仓库之前，可下载 ZIP 并使用手动安装。
+**推荐通过 GitHub 安装（Windows/macOS/Linux）：** 在 Hermes 中进入 **Capabilities → Plugins → Install from Git**，输入本项目仓库地址，选择 **Desktop**。仓库根目录提供 `plugin.js`，无需 Agent 组件、编译或原始 Chat Share。卸载请使用 **Capabilities → Plugins → Uninstall**。
 
 **手动安装：** Windows 运行 `Install.cmd` / `Install.ps1`，自动检测 `%LOCALAPPDATA%\hermes`，也支持 `HERMES_HOME` 或 `-HermesHome`。macOS/Linux 使用 `sh Install.sh`，默认 `$HOME/.hermes`，或设置 `HERMES_HOME`。找不到 Hermes 目录会安全退出。通过 Git 安装时请使用 Hermes 界面管理升级与删除。
 
@@ -159,7 +159,7 @@ PDF 当前以位图页面保存，文字未必可选中；ZIP32 STORE **不压�
 
 ### इंस्टॉल / अपडेट / हटाना
 
-**GitHub से इंस्टॉल करें (Windows/macOS/Linux, अनुशंसित):** Hermes में **Capabilities → Plugins → Install from Git** खोलें, इस रिपॉज़िटरी का URL दें और **Desktop** चुनें। रूट में `plugin.js` मौजूद है; Agent घटक, बिल्ड और मूल Chat Share ज़रूरी नहीं हैं। हटाने के लिए Hermes **Capabilities → Plugins → Uninstall** उपयोग करें। जब तक GitHub पर रिपॉज़िटरी प्रकाशित नहीं होती, ZIP से मैनुअल इंस्टॉल करें।
+**GitHub से इंस्टॉल करें (Windows/macOS/Linux, अनुशंसित):** Hermes में **Capabilities → Plugins → Install from Git** खोलें, इस रिपॉज़िटरी का URL दें और **Desktop** चुनें। रूट में `plugin.js` मौजूद है; Agent घटक, बिल्ड और मूल Chat Share ज़रूरी नहीं हैं। हटाने के लिए Hermes **Capabilities → Plugins → Uninstall** उपयोग करें।
 
 **मैनुअल विकल्प:** Windows पर `Install.cmd` / `Install.ps1` (`%LOCALAPPDATA%\hermes` या `HERMES_HOME`, कस्टम के लिए `-HermesHome`)। macOS/Linux पर `sh Install.sh`, डिफ़ॉल्ट `$HOME/.hermes` या `HERMES_HOME=/path`। यदि Hermes का सही होम नहीं मिला तो स्क्रिप्ट बदलाव किए बिना रुक जाती है। Git इंस्टॉल को Hermes UI से अपडेट या हटाएँ।
 

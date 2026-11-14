@@ -7,6 +7,7 @@
 - `scripts/build.py`: combines base with v0.1.0 layer.
 - `scripts/upgrade_v02.py`: deterministic v0.2.2 UI/i18n upgrade.
 - `desktop/plugin.js`: distributable compiled single-file ESM plugin. No build required to install.
+- `.github/workflows/ci.yml`: public Python/JavaScript/privacy and isolated Windows/Unix install validation; retained by the source builder.
 - Languages: host locale (auto) plus manual Russian/English preference, persisted in `optAtom`.
 - SDK-owned navigation and composer context-menu contributions are removed upon plugin disable/unload. The host does not expose the general transcript-context menu.
 - Never modify Hermes Gateway, local-runtime, original Chat Share, vision fix v8, model settings, or external caches.

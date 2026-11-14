@@ -157,6 +157,9 @@ class TestBuilder(unittest.TestCase):
             self.assertEqual((project/'desktop/plugin.js').read_text('utf-8'), (ROOT/'desktop/plugin.js').read_text('utf-8'))
             self.assertEqual((project/'plugin.js').read_text('utf-8'), (ROOT/'plugin.js').read_text('utf-8'))
             self.assertFalse((project/'plugin.yaml').exists())
+            self.assertEqual((project/'.github/workflows/ci.yml').read_bytes(), (ROOT/'.github/workflows/ci.yml').read_bytes())
+            self.assertEqual((project/'.gitignore').read_bytes(), (ROOT/'.gitignore').read_bytes())
+            self.assertEqual((project/'tests/test_public_package.py').read_bytes(), (ROOT/'tests/test_public_package.py').read_bytes())
 
 if __name__ == '__main__':
     unittest.main()
