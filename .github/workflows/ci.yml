@@ -1,4 +1,7 @@
 name: Validate ChatVault public release
+
+permissions:
+  contents: read
 on:
   push:
   pull_request:
@@ -6,13 +9,16 @@ jobs:
   source-tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: '22'
+          package-manager-cache: false
       - name: Python source and reproducibility tests
         run: python -m unittest discover -s tests -p 'test_*.py' -v
       - name: JavaScript tests and syntax
@@ -23,12 +29,25 @@ jobs:
           node tests/vault-i18n.test.mjs
       - name: Publication privacy audit
         run: python scripts/audit_public_release.py
-      - name: Shell syntax check
-        run: sh -n Install.sh && sh -n Uninstall.sh
+      - name: Unix installer smoke test (isolated temporary Hermes home)
+        run: |
+          set -eu
+          sh -n Install.sh
+          sh -n Uninstall.sh
+          fake_home="$(mktemp -d)"
+          trap 'rm -rf "$fake_home"' EXIT
+          sh Install.sh --hermes-home "$fake_home"
+          cmp plugin.js "$fake_home/desktop-plugins/hermes-chat-vault/plugin.js"
+          sh Install.sh --hermes-home "$fake_home"
+          test -n "$(find "$fake_home/desktop-plugins/hermes-chat-vault" -maxdepth 1 -name '*.bak' -print -quit)"
+          sh Uninstall.sh --hermes-home "$fake_home"
+          test ! -f "$fake_home/desktop-plugins/hermes-chat-vault/plugin.js"
   windows-installer:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
       - name: Test Windows installer in temporary Hermes home
         shell: pwsh
         run: |
