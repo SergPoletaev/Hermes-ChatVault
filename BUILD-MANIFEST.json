@@ -1,0 +1,9 @@
+{
+  "project": "Hermes ChatVault",
+  "version": "0.2.2",
+  "type": "desktop-only",
+  "upstream": "smallmj/hermes-chat-share v1.1.8 MIT + generic embedded-media fix",
+  "compiled_sha256": "3b1c715ab940075aeadb1937a70f538b15f729e86361492a6cfb3ba08fab48e2",
+  "source_rebuild": "python scripts/build.py upstream/working-chat-share-1.1.8.js <output_directory>",
+  "release_policy": "No real user files, credentials, session content, personal paths or local machine identifiers"
+}
