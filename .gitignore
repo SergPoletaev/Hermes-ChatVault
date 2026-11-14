@@ -1,0 +1,25 @@
+# Never commit runtime data, exports or secrets
+.env
+.env.*
+*.key
+*.pem
+*.p12
+*.pfx
+*.db
+*.sqlite*
+*.log
+*.bak
+*.tmp
+*.zip
+*.pdf
+*.png
+*.webp
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.7z
+node_modules/
+__pycache__/
+.pytest_cache/
+.DS_Store
